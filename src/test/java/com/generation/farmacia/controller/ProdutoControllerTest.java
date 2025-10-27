@@ -44,7 +44,7 @@ class ProdutoControllerTest extends BaseControllerTest {
 		);
 		
 		// Cria um Objeto BigDecimal com um preço padrão
-		preco = new BigDecimal("250.50");
+		preco = new BigDecimal("25.50");
 	}
 	
 	@Test
@@ -177,7 +177,7 @@ class ProdutoControllerTest extends BaseControllerTest {
 	
 	@Test
 	@Order(7)
-	@DisplayName("07 - Deve buscar produtos maiores que 200")
+	@DisplayName("07 - Deve buscar produtos maiores que 20")
 	void deveBuscarProdutoMaiorQue200() {
 		// Given
 		produtoRepository.save(
@@ -188,7 +188,7 @@ class ProdutoControllerTest extends BaseControllerTest {
 		String token = JwtHelper.obterToken(testRestTemplate, ADMIN, SENHA);
 		HttpEntity<Void> requisicao = JwtHelper.criarRequisicaoComToken(token);
 		ResponseEntity<Produto[]> resposta = testRestTemplate.exchange(
-				BASE_URL + "/preco_maior/200", HttpMethod.GET, requisicao, Produto[].class);
+				BASE_URL + "/preco_maior/20", HttpMethod.GET, requisicao, Produto[].class);
 
 		// Then
 		assertEquals(HttpStatus.OK, resposta.getStatusCode());
@@ -197,7 +197,7 @@ class ProdutoControllerTest extends BaseControllerTest {
 	
 	@Test
 	@Order(8)
-	@DisplayName("08 - Deve buscar produtos menores que 300")
+	@DisplayName("08 - Deve buscar produtos menores que 30")
 	void deveBuscarProdutoMenorQue300() {
 		// Given
 		produtoRepository.save(
@@ -208,7 +208,7 @@ class ProdutoControllerTest extends BaseControllerTest {
 		String token = JwtHelper.obterToken(testRestTemplate, ADMIN, SENHA);
 		HttpEntity<Void> requisicao = JwtHelper.criarRequisicaoComToken(token);
 		ResponseEntity<Produto[]> resposta = testRestTemplate.exchange(
-				BASE_URL + "/preco_menor/300", HttpMethod.GET, requisicao, Produto[].class);
+				BASE_URL + "/preco_menor/30", HttpMethod.GET, requisicao, Produto[].class);
 
 		// Then
 		assertEquals(HttpStatus.OK, resposta.getStatusCode());
